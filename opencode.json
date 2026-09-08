@@ -1,0 +1,23 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "skills": {
+    "paths": [".opencode/skills"]
+  },
+  "mcp": {
+    "barskuy-llm": {
+      "type": "local",
+      "command": ["C:/Users/Admin/Documents/barskuy-llm/build/bin/Release/barskuy-llm.exe", "--host", "127.0.0.1", "--port", "8080"],
+      "enabled": true
+    },
+    "llama-tools": {
+      "type": "local",
+      "command": ["npx", "-y", "mcp-remote", "http://127.0.0.1:8080/mcp"],
+      "enabled": true
+    }
+  },
+  "permission": {
+    "external_directory": {
+      "C:/Users/Admin/Documents/barskuy-llm/**": "allow"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+cmake_minimum_required(VERSION 3.20)
+
+project(sqlite3 LANGUAGES C)
+
+add_library(sqlite3 STATIC sqlite3.c)
+
+target_include_directories(sqlite3
+    PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        $<INSTALL_INTERFACE:include>
+)
+
+target_compile_definitions(sqlite3 PRIVATE
+    SQLITE_ENABLE_COLUMN_METADATA=1
+    SQLITE_ENABLE_DBSTAT_VTAB=1
+    SQLITE_ENABLE_FTS3=1
+    SQLITE_ENABLE_FTS3_PARENTHESIS=1
+    SQLITE_ENABLE_FTS4=1
+    SQLITE_ENABLE_FTS5=1
+    SQLITE_ENABLE_JSON1=1
+    SQLITE_ENABLE_RTREE=1
+    SQLITE_ENABLE_STAT4=1
+    SQLITE_SECURE_DELETE=1
+    SQLITE_SOUNDEX=1
+    SQLITE_TEMP_STORE=1
+    SQLITE_THREADSAFE=1
+    SQLITE_USE_URI=1
+)
+
+if(MSVC)
+    target_compile_definitions(sqlite3 PRIVATE _CRT_SECURE_NO_WARNINGS)
+endif()
+
+set_target_properties(sqlite3 PROPERTIES
+    C_STANDARD 11
+    C_STANDARD_REQUIRED ON
+    POSITION_INDEPENDENT_CODE ON
+)
+
+install(TARGETS sqlite3
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
+)
+
+install(FILES sqlite3.h sqlite3ext.h DESTINATION include)

@@ -1,0 +1,47 @@
+# Build directories
+build/
+bin/
+lib/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.db-journal
+
+# Model files
+*.gguf
+*.safetensors
+*.bin
+models/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+
+# Test output
+test_output/
+coverage/
+# barskuy output
+image/
+video/
+barskuy-llm-3.2.1-windows-vulkan.zip
+.opencode/
+
